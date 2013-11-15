@@ -1,29 +1,24 @@
 # Matriz
 
-TODO: Write a gem description
+Este proyecto constará de una clase Matriz abstracta. En la cual definiremos los métodos:
 
-## Installation
+	- [].
+	- []=.
+	- def + (Abstracto).
+	- def - (Abstracto).
+	- def * (Abstracto).
+	- def coerce (Nos permite realizar operaciones entre estructuras de datos distintas).
 
-Add this line to your application's Gemfile:
+# Matriz Densa
 
-    gem 'Matriz'
+Esta clase hereda la estructura de la superclase Matriz. Su estructura de datos constará de un array de arrays (para poder representar el contenido de las matrices). Esta matriz debe contener, al menos, un 40% de sus elementos no nulos para considerarse densa. En ella deberemos definir los métodos que nos permitirán realizar las distintas operaciones entre matrices. Tales como:
 
-And then execute:
+	- def + / - / *
+	- def to_s
 
-    $ bundle
+# Matriz Dispersa
 
-Or install it yourself as:
+Esta clase hereda la estructura de la superclase Matriz. Su estructura de datos constará de un array para la posición de los elementos de una matriz no nulos y otro para almacenar dichos valores. Esta matriz debe contener más de un 60% de sus elementos nulos para considerarse dispersa. En ella deberemos definir los métodos que nos permitirán realizar las distintas operaciones entre matrices. Tales como:
 
-    $ gem install Matriz
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+	- def + / - / *
+	- def to_s
