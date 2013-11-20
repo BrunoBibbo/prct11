@@ -95,6 +95,10 @@ class Fraccion
 	def <=>(other)
 		(@num/@den)<=>(other.num()/other.den())
 	end
+	
+	def coerce(other)
+	  [self,other]
+	end
 
 end
 
