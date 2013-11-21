@@ -1,5 +1,5 @@
 require "./lib/Matriz/Matriz.rb"
-
+module Matriz
 class Matriz_Densa < Matrix
   
   attr_reader(:alt, :anc)
@@ -117,7 +117,7 @@ class Matriz_Densa < Matrix
 	end
 	
 	#MINIMO
-	def mini
+	def min
 	  w=@M[0][0]
 	  for i in(0..@alt)
 	    for j in(0..@anc)
@@ -130,7 +130,7 @@ class Matriz_Densa < Matrix
 	end
 	
 end
-
+end
 l = Matriz_Densa.new(2,2,[1,2,3,4])
 puts l
 

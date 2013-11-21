@@ -1,8 +1,5 @@
 require "./lib/Matriz.rb"
 
-
-
-
 #Matrices con enteros
 
 
@@ -111,6 +108,12 @@ require "./lib/Matriz.rb"
 	@m3 = Matriz_Densa.new(2,2,[1,2,3,11])
 
 	(@md1+@m2).should eq(@m3)
+	end
+
+	it "Deben poder sumarse 2 matrices dispersas fraccion y densas enteras" do
+	@m3 = Matriz_Densa.new(2,2,[1,2,3,9/2])
+
+	(@md3+@m2).should eq(@m3)
 	end
 
 	it "Deben poder restarse matrices dispersas y densas" do

@@ -232,7 +232,7 @@ class Matriz_Dispersa < Matrix
 	end
 	
 	#MINIMO
-	def mini
+	def min
 	  w=0
 	  for i in(0..@n_elem-1)
 	    if(i == 0)
@@ -268,11 +268,11 @@ puts m+k
 
 puts "Minimos y maximos"
 puts q.max
-puts q.mini
+puts q.min
 puts m.max
-puts m.mini
+puts m.min
 puts k.max
-puts k.mini
+puts k.min
 
 puts "Restas"
 puts q-m
@@ -307,4 +307,6 @@ b= Matriz_Densa.new(2,2,[Fraccion.new(1,2),Fraccion.new(2,3),Fraccion.new(3,4),F
 
 puts a+b
 puts a*b
+
+puts u+k
 

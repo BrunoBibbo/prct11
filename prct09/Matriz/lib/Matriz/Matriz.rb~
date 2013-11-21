@@ -1,5 +1,5 @@
-require "Fraccion.rb"
-
+require "./lib/Matriz/Fraccion.rb"
+module Matriz
 class Matrix
 	
 	attr_reader(:alt, :anc)
@@ -16,4 +16,5 @@ class Matrix
 	def coerce(other)
 	  [self,other]
 	end
+end
 end

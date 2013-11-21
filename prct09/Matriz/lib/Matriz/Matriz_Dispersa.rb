@@ -283,6 +283,7 @@ puts "Multiplicaciones"
 puts q*e
 puts q*k
 puts k*q
+puts q+m
 
 puts "Operaciones con densas con fracciones"
 l= Matriz_Densa.new(2,2,[Fraccion.new(1,2),Fraccion.new(2,3),Fraccion.new(3,4),Fraccion.new(4,5)])
@@ -307,4 +308,6 @@ b= Matriz_Densa.new(2,2,[Fraccion.new(1,2),Fraccion.new(2,3),Fraccion.new(3,4),F
 
 puts a+b
 puts a*b
+
+puts u+k
 
