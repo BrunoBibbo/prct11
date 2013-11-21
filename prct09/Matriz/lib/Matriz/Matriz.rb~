@@ -1,6 +1,6 @@
-require "./Fraccion.rb"
+require "Fraccion.rb"
 
-class Matriz
+class Matrix
 	
 	attr_reader(:alt, :anc)
 	

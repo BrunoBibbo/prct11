@@ -1,6 +1,6 @@
-require "./Matriz.rb"
+require "Matriz.rb"
 
-class Matriz_Densa < Matriz
+class Matriz_Densa < Matrix
   
   attr_reader(:alt, :anc)
 	
@@ -73,7 +73,7 @@ class Matriz_Densa < Matriz
 	#RESTA
 	def -(other)
 		if(@alt==@anc)
-			resta=Matriz_Densa.new(@alt+1,@anc+1, 0)
+			resta=Matriz_Densa.new(@alt+1,@anc+1, [])
 			for i in (0..@alt)
 				for j in (0..@anc)
 					resta[i,j]=@M[i][j]-other[i][j]

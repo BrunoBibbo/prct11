@@ -1,7 +1,7 @@
-require "./Matriz.rb"
-require "./Matriz_Densa.rb"
+require "./lib/Matriz/Matriz.rb"
+require "./lib/Matriz/Matriz_Densa.rb"
 
-class Matriz_Dispersa < Matriz
+class Matriz_Dispersa < Matrix
 
   attr_accessor(:alt, :anc, :n_elem, :alto, :ancho, :elem)
   
@@ -307,3 +307,4 @@ b= Matriz_Densa.new(2,2,[Fraccion.new(1,2),Fraccion.new(2,3),Fraccion.new(3,4),F
 
 puts a+b
 puts a*b
+

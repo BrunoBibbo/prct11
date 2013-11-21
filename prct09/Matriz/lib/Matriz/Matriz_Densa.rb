@@ -1,6 +1,6 @@
-require "./Matriz.rb"
+require "./lib/Matriz/Matriz.rb"
 
-class Matriz_Densa < Matriz
+class Matriz_Densa < Matrix
   
   attr_reader(:alt, :anc)
 	
