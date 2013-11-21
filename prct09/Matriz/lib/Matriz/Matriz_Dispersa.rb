@@ -43,6 +43,7 @@ class Matriz_Dispersa < Matriz
 		end
 	end
 
+	#PASAR A MATRIZ DENSA
 	def to_densa
 	  @M = Matriz_Densa.new(@alt+1,@anc+1, 0)
 	  for i in (0..@alt)
@@ -56,6 +57,7 @@ class Matriz_Dispersa < Matriz
 	  @M
 	end
 	
+	#METODO TO_S
 	def to_s
 	  w=0
 	  aux = "["
@@ -64,13 +66,25 @@ class Matriz_Dispersa < Matriz
 	    for j in(0..@anc)
 		if (w < @n_elem && i==@alto[w])
 		    if(j==@ancho[w])
-		      aux += "#{@elem[w]}"
+		      if(j==@anc)
+			aux += "#{@elem[w]}"
+		      else
+			aux += "#{@elem[w]},"
+		      end
 		      w=w+1
 		    else
-		      aux += "0"
+		      if(j==@anc)
+			aux += "0"
+		      else
+			aux += "0,"
+		      end
 		    end
 		else
-		  aux += "0"
+		  if(j==@anc)
+			aux += "0"
+		      else
+			aux += "0,"
+		      end
 		end
 	      end
 	  aux += "]"
@@ -79,13 +93,19 @@ class Matriz_Dispersa < Matriz
 	  aux
 	end
 	
+	#SUMA
 	def +(other)
 	  if (other.is_a? Matriz_Dispersa)
 		if(@alt==other.alt && @anc=other.anc)
 			suma=Matriz_Dispersa.new(@alt+1,@anc+1, [],[],[], (@n_elem+other.n_elem))
 			m = 0
 			for i in (0..suma.n_elem-1)
-			  suma.elem[i]=0
+			  if(other.elem[i].is_a? Fixnum)
+			    suma.elem[i]=0
+			  end
+			  if(other.elem[i].is_a? Fraccion)
+			    suma.elem[i]=Fraccion.new(0,1)
+			  end
 			end
 			for i in(0..@alt)
 			  for j in (0..@anc)
@@ -130,13 +150,19 @@ class Matriz_Dispersa < Matriz
 	  end
 	end
 
+	#RESTA
 	def -(other)
 	  if (other.is_a? Matriz_Dispersa)
 		if(@alt==other.alt && @anc=other.anc)
 			resta=Matriz_Dispersa.new(@alt+1,@anc+1, [],[],[], (@n_elem+other.n_elem))
 			m = 0
 			for i in (0..resta.n_elem-1)
-			  resta.elem[i]=0
+			  if(other.elem[i].is_a? Fixnum)
+			    resta.elem[i]=0
+			  end
+			  if(other.elem[i].is_a? Fraccion)
+			    resta.elem[i]=Fraccion.new(0,1)
+			  end
 			end
 			for i in(0..@alt)
 			  for j in (0..@anc)
@@ -181,40 +207,20 @@ class Matriz_Dispersa < Matriz
 	  end
 	end
 
+	#MULTIPLICACION
 	def *(other)
-	  if (other.is_a? Matriz_Dispersa)
-		if(@anc==other.alt)
-			mult=Matriz_Dispersa.new(other.alt+1,@anc+1, [],[],[], (@n_elem+other.n_elem))
-			m = 0
-			for i in (0..resta.n_elem-1)
-			  mult.elem[i]=0
-			end
-			for i in(0..@alt)
-			  for j in (0..other.anc)
-			    for k in(0..mul.n_elem-1)
-			      if(@ancho[k] == other.alto[j])
-				mul.elem[m]= (mul.elem[m]+(@elem[i]*other.elem[j]))
-				mul.alto[m]=@alto[i]
-				mul.ancho[m]=other.ancho[j]
-				#Falta terminar implementar la multiplicacion
-			      end
-			    end
-			  end
-			end	
-		else
-		  puts "no se puede realizar la resta"
-		end
-	  else
-	    if(other.is_a? Matriz_Densa)
 	      if(@alt==other.alt && @anc=other.anc)
-		self.to_densa.*(other)
+		if(other.is_a? Matriz_Dispersa)
+		  self.to_densa.*(other.to_densa)
+		else
+		  self.to_densa.*(other)
+		end
 	      else
-		puts "no se puede realizar la resta"
+		puts "no se puede realizar la multiplicacion"
 	      end
 	    end
-	  end
-	end 
 	
+	#MAXIMO
 	def max
 	  w=0
 	  for i in(0..@n_elem-1)
@@ -225,6 +231,7 @@ class Matriz_Dispersa < Matriz
 	  w
 	end
 	
+	#MINIMO
 	def min
 	  w=0
 	  for i in(0..@n_elem-1)
@@ -249,12 +256,17 @@ puts m
 k=Matriz_Densa.new(2,2,[1,2,3,4])
 puts k
 
+e = Matriz_Dispersa.new(2,2,[1],[1],[5],1)
+
+puts "Sumas"
+
 puts q+m
 
 puts q+k
 
 puts m+k
 
+puts "Minimos y maximos"
 puts q.max
 puts q.min
 puts m.max
@@ -262,6 +274,36 @@ puts m.min
 puts k.max
 puts k.min
 
+puts "Restas"
 puts q-m
 puts k-q
 puts m-k
+
+puts "Multiplicaciones"
+puts q*e
+puts q*k
+puts k*q
+
+puts "Operaciones con densas con fracciones"
+l= Matriz_Densa.new(2,2,[Fraccion.new(1,2),Fraccion.new(2,3),Fraccion.new(3,4),Fraccion.new(4,5)])
+n= Matriz_Densa.new(2,2,[Fraccion.new(1,2),Fraccion.new(2,3),Fraccion.new(3,4),Fraccion.new(4,5)])
+puts l
+puts n
+puts l+n
+puts l-n
+puts l*n
+
+u=Matriz_Dispersa.new(2,2,[1],[1],[Fraccion.new(1,2)],1)
+puts u
+y=Matriz_Dispersa.new(2,2,[0],[0],[Fraccion.new(2,5)],1)
+puts y
+
+puts u+y
+puts u-y
+
+a= Matriz_Densa.new(2,2,[1,1,1,1])
+b= Matriz_Densa.new(2,2,[Fraccion.new(1,2),Fraccion.new(2,3),Fraccion.new(3,4),Fraccion.new(4,5)])
+
+
+puts a+b
+puts a*b

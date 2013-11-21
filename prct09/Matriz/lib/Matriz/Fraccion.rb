@@ -60,10 +60,8 @@ class Fraccion
 		@num = @num/aux
 		@den = @den/aux
 
-		if gcd(@num, @den) > 1
-			self.min
-		end
-	to_s
+		Fraccion.new(@num,@den)
+
 	end	
 #Se debe calcular el resto dos fracciones con % y dar el resultado de forma reducida
 	def %(other)
@@ -76,13 +74,13 @@ class Fraccion
 #Se debe sumar dos fracciones con + y dar el resultado de forma reducida
         def +(other)
  
-        Fraccion.new(((@num * other.den) + (other.num * @den)), (@den * other.den)).min.to_i
+        Fraccion.new(((@num * other.den) + (other.num * @den)), (@den * other.den)).min
  
         end
 # Se debe multiplicar dos fracciones con * y dar el resultado de forma reducida
         def *(other)
 
-        Fraccion.new(@num * other.num, @den * other.den)
+        Fraccion.new(@num * other.num, @den * other.den).min
 
         end
 #Se debe dividir dos fracciones con / y dar el resultado de forma reducida
@@ -97,7 +95,10 @@ class Fraccion
 	end
 	
 	def coerce(other)
-	  [self,other]
+	  if(other.is_a? Fixnum)
+	    dev = Fraccion.new(other,1)
+	    [self,dev]
+	  end
 	end
 
 end

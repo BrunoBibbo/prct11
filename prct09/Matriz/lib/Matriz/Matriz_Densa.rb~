@@ -37,6 +37,7 @@ class Matriz_Densa < Matriz
 		end
 	end
 
+	#METODO TO_S
 	def to_s
 		aux = "["
 		for i in(0..@alt)
@@ -54,9 +55,10 @@ class Matriz_Densa < Matriz
 		aux
 	end
 	
+	#SUMA
 	def +(other)
 		if(@alt==other.alt && @anc==other.anc)
-			suma=Matriz_Densa.new(@alt+1,@anc+1, 0)
+			suma=Matriz_Densa.new(@alt+1,@anc+1, [])
 			for i in (0..@alt)
 				for j in (0..@anc)
 					suma[i,j]=(@M[i][j]+other[i][j])
@@ -68,6 +70,7 @@ class Matriz_Densa < Matriz
 		end
 	end
 
+	#RESTA
 	def -(other)
 		if(@alt==@anc)
 			resta=Matriz_Densa.new(@alt+1,@anc+1, 0)
@@ -82,23 +85,25 @@ class Matriz_Densa < Matriz
 		end
 	end
 
+	#MULTIPLICACION
 	def *(other)
-	  mul = Matriz_Densa.new(@alt+1, @anc+1, 0)
-	  for i in (0..@alt)
+	    mul = Matriz_Densa.new(@alt+1, @anc+1, [])
+	    for i in (0..@alt)
 		  for j in (0..@anc)
-		    mul[i][j] = 0
+		      mul[i][j] = 0
 		  end
-	  end
-	  for i in (0..@alt)
+	    end
+	    for i in (0..@alt)
 		  for j in (0..@anc)
 			  for k in (0..@anc)
 				  mul[i][j] += ((@M[i][k])*(other[k][j]))
 			  end
 		  end
+	    end
+	    mul
 	  end
-	  mul
-	end
 	
+	#MAXIMO
 	def max
 	  w=0
 	  for i in(0..@alt)
@@ -111,14 +116,14 @@ class Matriz_Densa < Matriz
 	  w
 	end
 	
+	#MINIMO
 	def min
-	  w=0
-	  for i in(0..@n_elem-1)
-	    if(i == 0)
-	      w = @elem[i]
-	    end
-	    if(w > @elem[i])
-	      w = @elem[i]
+	  w=@M[0][0]
+	  for i in(0..@alt)
+	    for j in(0..@anc)
+	      if(w > @M[i][j])
+		w = @M[i][j]
+	      end
 	    end
 	  end
 	  w
