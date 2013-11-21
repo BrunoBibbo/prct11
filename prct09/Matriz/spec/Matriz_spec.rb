@@ -1,7 +1,13 @@
 require "./lib/Matriz.rb"
 
 
- 
+
+
+#Matrices con enteros
+
+
+
+
    describe "Operaciones con enteros" do
     before :all do
       # Crear matrices
@@ -37,7 +43,16 @@ require "./lib/Matriz.rb"
     end
   end
 
-  describe "Operaciones con fracciones" do
+
+
+
+
+# Matrices con Fracciones
+
+
+
+
+  describe "Operaciones con matrices densas con fracciones" do
     before :all do
       # Crear matrices
       @m1 = Matriz_Densa.new(2,2,[Fraccion.new(1,2),Fraccion.new(2,3),Fraccion.new(3,4),Fraccion.new(4,5)])
@@ -72,16 +87,25 @@ require "./lib/Matriz.rb"
     end
   end
 
+
+
+#Operaciones entre Densas y dispersas
+
+
+
   describe"Operaciones entre dispersa y densa" do
 	before :all do
 	#Crear matrices
         @m1 = Matriz_Densa.new(2,2,[Fraccion.new(1,2),Fraccion.new(2,3),Fraccion.new(3,4),Fraccion.new(4,5)])
         @m2 = Matriz_Densa.new(2, 2,[1,2,3,4]) 
 	@md1 = Matriz_Dispersa.new(2,2,[1],[1],[7],1)
-        @md2 = Matriz_Dispersa.new(2,2,[1],[1],[Fraccion.new(1,2)],1)
+	@md2 = Matriz_Dispersa.new(2,2,[0],[0],[5],1)
+        @md3 = Matriz_Dispersa.new(2,2,[1],[1],[Fraccion.new(1,2)],1)
+	@md4 = Matriz_Dispersa.new(2,2,[0],[0],[Fraccion.new(2,5)],1)
 	end
 	
 	#@m3 es la matriz resultado
+
 
 	it "Deben poder sumarse 2 matrices dispersas y densas" do
 	@m3 = Matriz_Densa.new(2,2,[1,2,3,11])
@@ -100,10 +124,54 @@ require "./lib/Matriz.rb"
 
 	(@md1+@m2).should eq(@m3)
 	end
+end
+	
+
+
+
+	#Maximos y Minimos
+
+
+
+  describe " Maximos y Minimos" do
+	before :all do
+	#Crear matrices
+        @m1 = Matriz_Densa.new(2,2,[Fraccion.new(1,2),Fraccion.new(2,3),Fraccion.new(3,4),Fraccion.new(4,5)])
+        @m2 = Matriz_Densa.new(2, 2,[1,2,3,4]) 
+	@md1 = Matriz_Dispersa.new(2,2,[1],[1],[7],1)
+        @md3 = Matriz_Dispersa.new(2,2,[1],[1],[Fraccion.new(1,2)],1)
+
+	end
+
+#Maximos
+
+	it "Maximo densas entera"do
+	@m2.max.should eq(4)
+	
+	end	
+	it "Maximo densas fraccion"do
+	@m1.max.should eq(1/2)
+	
+	end
+	it "Maximo dispersa entera"do
+	@md1.max.should eq(7)
+	
+	end
+	it "Maximo dispersa fraccion"do
+	@md3.max.should eq(2/5)
+	end
+#Minimos
+	
+	it "Minimo densas entera"do
+	@m2.min.should eq(1)
+	
+	end	
+
+	it "Minimo dispersa entera"do
+	@md1.min.should eq(7)
+	
+	end
 
 
   end
-
-
-
 

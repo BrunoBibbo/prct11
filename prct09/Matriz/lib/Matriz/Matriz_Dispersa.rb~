@@ -232,7 +232,7 @@ class Matriz_Dispersa < Matrix
 	end
 	
 	#MINIMO
-	def min
+	def mini
 	  w=0
 	  for i in(0..@n_elem-1)
 	    if(i == 0)
@@ -268,11 +268,11 @@ puts m+k
 
 puts "Minimos y maximos"
 puts q.max
-puts q.min
+puts q.mini
 puts m.max
-puts m.min
+puts m.mini
 puts k.max
-puts k.min
+puts k.mini
 
 puts "Restas"
 puts q-m

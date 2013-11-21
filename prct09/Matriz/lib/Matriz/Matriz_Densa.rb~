@@ -1,4 +1,4 @@
-require "Matriz.rb"
+require "./lib/Matriz/Matriz.rb"
 
 class Matriz_Densa < Matrix
   
@@ -117,7 +117,7 @@ class Matriz_Densa < Matrix
 	end
 	
 	#MINIMO
-	def min
+	def mini
 	  w=@M[0][0]
 	  for i in(0..@alt)
 	    for j in(0..@anc)
