@@ -1,24 +1,6 @@
 require "./lib/Matriz.rb"
 require "test/unit"
-
-class Fixnum
-        def self.null
-                       0
-        end
-end
-        
-class String
-        def self.null
-                       ""
-        end
-end
-        
-class Float
-        def self.null
-                       0.0
-        end
-end        
-        
+   
 
 class Test_Matriz < Test::Unit::TestCase
 
@@ -48,11 +30,5 @@ class Test_Matriz < Test::Unit::TestCase
                 assert_raise(TypeError) {@m1+@m2}
         end
         
-        def test_failure
-                @m1 = Matriz_Densa.new(2,2,[1,2,3,4])
-                @m2 = Matriz_Densa.new(2,2,[1,2,3,4])
-
-                assert_raise(ArgumentError) {@m1*@m2}
-        end
         
 end
