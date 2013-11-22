@@ -6,7 +6,7 @@ require 'Matriz/version'
 Gem::Specification.new do |spec|
   spec.name          = "Matriz"
   spec.version       = Matriz::VERSION
-  spec.authors       = ["Bruno Bibbo"]
+  spec.authors       = ["Bruno Bibbo & Ayoze Elvira"]
   spec.email         = ["alu0100697063@ull.edu.es"]
   spec.description   = %q{Esta gema se utilizara para crear matrices, tanto de forma densa como dispersa para la practica de esta semana}
   spec.summary       = %q{Creacion de matrices}

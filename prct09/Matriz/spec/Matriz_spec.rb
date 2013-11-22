@@ -170,6 +170,7 @@ end
 	
 	end	
 
+
 	it "Minimo dispersa entera"do
 	@md1.min.should eq(7)
 	

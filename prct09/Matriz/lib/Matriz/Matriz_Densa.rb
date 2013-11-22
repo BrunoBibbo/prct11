@@ -6,6 +6,10 @@ class Matriz_Densa < Matrix
 	
 	def initialize(alt, anc, array)
 		super(alt, anc)
+		@M = Array.new(@alt)
+		for i in (0..@alt)
+			@M[i]=Array.new(@anc)
+		end
 		t = 0
 		for i in (0..@alt)
 		  for j in (0..@anc)

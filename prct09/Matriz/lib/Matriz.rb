@@ -4,8 +4,8 @@ require "./lib/Matriz/Fraccion.rb"
 require "./lib/Matriz/Matriz_Densa.rb"
 require "./lib/Matriz/Matriz_Dispersa.rb"
 
-module Matriz
-  
 
+
+module Matriz
 
 end

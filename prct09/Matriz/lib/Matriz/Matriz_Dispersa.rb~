@@ -1,5 +1,5 @@
-require "./lib/Matriz/Matriz.rb"
-require "./lib/Matriz/Matriz_Densa.rb"
+
+require "Matriz/Matriz_Densa.rb"
 
 class Matriz_Dispersa < Matrix
 
@@ -283,6 +283,7 @@ puts "Multiplicaciones"
 puts q*e
 puts q*k
 puts k*q
+puts q+m
 
 puts "Operaciones con densas con fracciones"
 l= Matriz_Densa.new(2,2,[Fraccion.new(1,2),Fraccion.new(2,3),Fraccion.new(3,4),Fraccion.new(4,5)])

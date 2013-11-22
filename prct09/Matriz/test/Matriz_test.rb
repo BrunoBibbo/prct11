@@ -1,21 +1,16 @@
 require "./lib/Matriz.rb"
+
 require "test/unit"
    
 class Test_Matriz < Test::Unit::TestCase
 
-class Matriz_Densas < Matriz_Densa
-    def zero
-        0
-    end
-end
-
     def setup
         # Crear matrices
-        # -- Densas Enteras
+        # -- Densas 
         @m1 = Matriz_Densas.new(2,2,[1,2,3,4])
         @m2 = Matriz_Densas.new(2,2,[1,2,3,4])
 
-        # -- Dispersas Enteras
+        # -- Dispersas
         @md1 = Matriz_Dispersa.new(2,2,[1],[1],[7],1)
         @md2 = Matriz_Dispersa.new(2,2,[0],[0],[5],1)
 

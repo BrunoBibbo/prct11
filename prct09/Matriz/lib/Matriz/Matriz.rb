@@ -7,10 +7,7 @@ class Matrix
 	def initialize(alt, anc)
 		@alt = (alt-1)
 		@anc = (anc-1)
-		@M = Array.new(@alt)
-		for i in (0..@alt)
-			@M[i]=Array.new(@anc)
-		end
+
 	end
 	
 	def coerce(other)
