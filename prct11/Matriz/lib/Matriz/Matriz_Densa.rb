@@ -63,8 +63,8 @@ class Matriz_Densa < Matrix
 	def +(other)
 		if(@alt==other.alt && @anc==other.anc)
 			suma=Matriz_Densa.new(@alt+1,@anc+1, [])
-			for i in (0..@alt)
-				for j in (0..@anc)
+			(@alt+1).times do |i|
+				(@anc+1).times do |j|
 					suma[i,j]=(@M[i][j]+other[i][j])
 				end
 			end
@@ -78,8 +78,8 @@ class Matriz_Densa < Matrix
 	def -(other)
 		if(@alt==@anc)
 			resta=Matriz_Densa.new(@alt+1,@anc+1, [])
-			for i in (0..@alt)
-				for j in (0..@anc)
+			(@alt+1).times do |i|
+				(@anc+1).times do |j|
 					resta[i,j]=@M[i][j]-other[i][j]
 				end
 			end
@@ -92,14 +92,14 @@ class Matriz_Densa < Matrix
 	#MULTIPLICACION
 	def *(other)
 	    mul = Matriz_Densa.new(@alt+1, @anc+1, [])
-	    for i in (0..@alt)
-		  for j in (0..@anc)
+	    (@alt+1).times do |i|
+		  (@anc+1).times do |j|
 		      mul[i][j] = 0
 		  end
 	    end
-	    for i in (0..@alt)
-		  for j in (0..@anc)
-			  for k in (0..@anc)
+	    (@alt+1).times do |i|
+		  (@anc+1).times do |j|
+			  (@anc+1).times do |k|
 				  mul[i][j] += ((@M[i][k])*(other[k][j]))
 			  end
 		  end
