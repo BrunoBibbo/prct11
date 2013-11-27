@@ -99,7 +99,7 @@ class Matriz_Dispersa < Matrix
 		if(@alt==other.alt && @anc=other.anc)
 			suma=Matriz_Dispersa.new(@alt+1,@anc+1, [],[],[], (@n_elem+other.n_elem))
 			m = 0
-			for i in (0..suma.n_elem-1)
+			0.upto(suma.n_elem-1) do |i|
 			  if(other.elem[i].is_a? Fixnum)
 			    suma.elem[i]=0
 			  end
@@ -107,11 +107,11 @@ class Matriz_Dispersa < Matrix
 			    suma.elem[i]=Fraccion.new(0,1)
 			  end
 			end
-			for i in(0..@alt)
-			  for j in (0..@anc)
-			    for h in (0..@n_elem-1)
+			0.upto(@alt) do |i|
+			  0.upto(@anc) do |j|
+			    0.upto(@n_elem-1) do |h|
 			      if(i==@alto[h])
-				for t in (0..@n_elem-1)
+				0.upto(@n_elem-1) do |t|
 				  if(j == @alto[t] && h==t)
 				    suma.elem[m]=@elem[t]
 				    suma.alto[m]=@alto[t]
@@ -121,9 +121,9 @@ class Matriz_Dispersa < Matrix
 				end
 			      end
 			    end
-			      for l in (0..other.n_elem-1)
+			      0.upto(other.n_elem-1) do |l|
 				if(i==other.alto[l])
-				  for t in(0..other.n_elem-1)
+				  0.upto(other.n_elem-1) do |t|
 				    if(j==other.alto[t] && l==t)
 				      suma.elem[m]=(suma.elem[m]+other.elem[t])
 				      suma.alto[m]=other.alto[t]
@@ -156,7 +156,7 @@ class Matriz_Dispersa < Matrix
 		if(@alt==other.alt && @anc=other.anc)
 			resta=Matriz_Dispersa.new(@alt+1,@anc+1, [],[],[], (@n_elem+other.n_elem))
 			m = 0
-			for i in (0..resta.n_elem-1)
+			(0..resta.n_elem-1).map do |i|
 			  if(other.elem[i].is_a? Fixnum)
 			    resta.elem[i]=0
 			  end
@@ -164,11 +164,11 @@ class Matriz_Dispersa < Matrix
 			    resta.elem[i]=Fraccion.new(0,1)
 			  end
 			end
-			for i in(0..@alt)
-			  for j in (0..@anc)
-			    for h in (0..@n_elem-1)
+			(0..@alt).map do |i|
+			  (0..@anc).map do |j|
+			    (0..@n_elem-1).map do |h|
 			      if(i==@alto[h])
-				for t in (0..@n_elem-1)
+				(0..@n_elem-1).map do |t|
 				  if(j == @alto[t] && h==t)
 				    resta.elem[m]=@elem[t]
 				    resta.alto[m]=@alto[t]
@@ -178,9 +178,9 @@ class Matriz_Dispersa < Matrix
 				end
 			      end
 			    end
-			      for l in (0..other.n_elem-1)
+			      (0..other.n_elem-1).map do |l|
 				if(i==other.alto[l])
-				  for t in(0..other.n_elem-1)
+				  (0..other.n_elem-1).map do |t|
 				    if(j==other.alto[t] && l==t)
 				      resta.elem[m]=(resta.elem[m]-other.elem[t])
 				      resta.alto[m]=other.alto[t]
@@ -258,6 +258,7 @@ puts k
 
 e = Matriz_Dispersa.new(2,2,[1],[1],[5],1)
 
+puts "DISPERSAS"
 puts "Sumas"
 
 puts q+m
