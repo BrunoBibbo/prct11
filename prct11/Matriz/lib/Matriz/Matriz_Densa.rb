@@ -1,9 +1,10 @@
 require "./lib/Matriz/Matriz.rb"
-
+# Clase Matriz_Densa que hereda de Matrix, permite crear matrices densas.
 class Matriz_Densa < Matrix
-  
+  #alt=alto  anc= ancho
   attr_reader(:alt, :anc)
-	
+	# El initialize asigna los valores a las variables de instancias.
+	# Se utiliza una estructura Array de Arrays.
 	def initialize(alt, anc, array)
 		super(alt, anc)
 		@M = Array.new(@alt)
@@ -18,7 +19,7 @@ class Matriz_Densa < Matrix
 		  end
 		end
 	end
-
+	#Metodos que permite acceder a un elemento de la matriz.
 	def [](i, j = nil)
 		if (j.nil?)
 			@M[i]
@@ -26,11 +27,11 @@ class Matriz_Densa < Matrix
 			@M[i,j]
 		end
 	end
-
+	#Metodos que permite asignar un valor en la matriz.
 	def []=(i, j, value)
 		@M[i][j]=value
 	end
-
+	#Metodo de comparacion.
 	def ==(other)
 		if (@alt == other.alt()) && (@anc == other.anc())
 			for i in (0..@alt)
@@ -41,7 +42,7 @@ class Matriz_Densa < Matrix
 		end
 	end
 
-	#METODO TO_S
+	#METODO TO_S para convertir a string.
 	def to_s
 		aux = "["
 		for i in(0..@alt)
@@ -59,7 +60,8 @@ class Matriz_Densa < Matrix
 		aux
 	end
 	
-	#SUMA
+	#SUMA de dos matrices.
+	#Como iterador se usa "times" el cual ejecutara el bloque que se le pase el numero de veces que se le indique.
 	def +(other)
 		if(@alt==other.alt && @anc==other.anc)
 			suma=Matriz_Densa.new(@alt+1,@anc+1, [])
@@ -74,7 +76,8 @@ class Matriz_Densa < Matrix
 		end
 	end
 
-	#RESTA
+	#RESTA de dos matrices.
+	#Como iterador se usa "times" el cual ejecutara el bloque que se le pase el numero de veces que se le indique.
 	def -(other)
 		if(@alt==@anc)
 			resta=Matriz_Densa.new(@alt+1,@anc+1, [])
@@ -89,7 +92,8 @@ class Matriz_Densa < Matrix
 		end
 	end
 
-	#MULTIPLICACION
+	#MULTIPLICACION de dos matrices.
+	#Como iterador se usa "times" el cual ejecutara el bloque que se le pase el numero de veces que se le indique.
 	def *(other)
 	    mul = Matriz_Densa.new(@alt+1, @anc+1, [])
 	    (@alt+1).times do |i|
@@ -107,7 +111,7 @@ class Matriz_Densa < Matrix
 	    mul
 	  end
 	
-	#MAXIMO
+	#MAXIMO, calcula el elemento mas grande de la matriz.
 	def max
 	  w=0
 	  for i in(0..@alt)
@@ -120,7 +124,7 @@ class Matriz_Densa < Matrix
 	  w
 	end
 	
-	#MINIMO
+	#MINIMO, calcula el elemento mas pequenyo de la matriz.
 	def min
 	  w=@M[0][0]
 	  for i in(0..@alt)
@@ -133,16 +137,6 @@ class Matriz_Densa < Matrix
 	  w
 	end
 	
-end
+end #Matriz_Densa
 
-l = Matriz_Densa.new(2,2,[1,2,3,4])
-puts l
 
-r = Matriz_Densa.new(2,2,[1,2,3,4])
-puts r
-
-puts l*r
-
-puts l+r
-
-puts l-r

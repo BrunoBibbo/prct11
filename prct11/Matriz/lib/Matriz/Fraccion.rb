@@ -1,17 +1,14 @@
-
-include Comparable
-
+#Clase Fraccion utilizada para las operaciones entre fracciones.
 class Fraccion
-#Se debe invocar al metodo num() para obtener el numerador
-# Se debe invocar al metodo denom() para obtener el denominador
+include Comparable
+	#num=numerador den=denominador
 	attr_reader :num, :den
-#  Debe existir un numerador
-#  Debe existir un denominador
+#Inicializador de las variables de instancias
 	def initialize(num, den)
 		@num = num
 		@den = den
 	end
-#Se debe mostar por la consola la fraccion de la forma: a/b, donde a es el numerador y b el denominador
+#Se utiliza el metodo to_s para mostrar las fracciones en el formato a/b.
 	def to_s
 		if @num % @den == 0
 			aux = "#{@num/@den}"
@@ -19,11 +16,11 @@ class Fraccion
 			aux = "#{@num}/#{@den}"
 		end
 	end
-#  Se debe mostar por la consola la fraccion en formato flotante
+#  Se utiliza este metodo para mostrar las fracciones en formato flotante.
 	def mfloat
 		"#{@num/@den}"
 	end
-#  Se debe calcular el valor absoluto de una fraccion con el metodo abs
+#  Este metodo es utilizado para calcular el valor absoluto.
 	def abs
 		n = @num
 		d = @den
@@ -38,20 +35,20 @@ class Fraccion
 
 		Fraccion.new(n, d)
 	end
-# Se debe calcular el reciproco de una fraccion con el metodo reciprocal
+# Se utiliza este metodo para calcular el reciproco de la fraccion.
 	def reciprocal
 		Fraccion.new(@den, @num)
 	end
 
-
+#El siguiente metodo se usa polimorfismo, para que haga las resta o el opuesto segun los argumentos que se le pasen.
         def -(*args) 
-                if args.size == 0  #  Se debe calcular el opuesto de una fraccion con -
+                if args.size == 0  #  Calcula el opuesto.
  		Fraccion.new(-@num, @den)
-                else   #  Se debe restar dos fracciones con - y dar el resultado de forma reducida
+                else   #  Se restan dos fracciones.
                    return Fraccion.new((@num * args[0].den)-(args[0].num * @den), @den * args[0].den).min
 		end
         end
-#Debe de estar en su forma reducida
+#Este metodo se usa para dar las fracciones en forma reducida.
 	def min
 	
 		aux = gcd(@num, @den)
@@ -62,7 +59,7 @@ class Fraccion
 		Fraccion.new(@num,@den)
 
 	end	
-#Se debe calcular el resto dos fracciones con % y dar el resultado de forma reducida
+#Se utiliza este metodo para calcular el resto dos fracciones con % y dar el resultado de forma reducida
 	def %(other)
 		a = @num*other.den()
 		b = @den*other.num()
@@ -70,36 +67,36 @@ class Fraccion
 		d = c.num()%c.den()
 		return d/1
 	end
-#Se debe sumar dos fracciones con + y dar el resultado de forma reducida
+#Se suman dos fracciones con + y se da el resultado de forma reducida.
         def +(other)
  
         Fraccion.new(((@num * other.den) + (other.num * @den)), (@den * other.den)).min
  
         end
-# Se debe multiplicar dos fracciones con * y dar el resultado de forma reducida
+# Se multiplican dos fracciones con * y se da el resultado de forma reducida.
         def *(other)
 
         Fraccion.new(@num * other.num, @den * other.den).min
 
         end
-#Se debe dividir dos fracciones con / y dar el resultado de forma reducida
+#Se dividen dos fracciones con / y se da el resultado de forma reducida.
         def /(other)
 
         Fraccion.new(@num * other.den, @den * other.num).min
 
         end
-
+#Permite la utilizacion de Comparable
 	def <=>(other)
 		(@num/@den)<=>(other.num()/other.den())
 	end
-	
+#Este metodo nos permite operar con numeros de distinto tipo.
 	def coerce(other)
 	  if(other.is_a? Fixnum)
 	    dev = Fraccion.new(other,1)
 	    [self,dev]
 	  end
 	end
-
+#Calcula el maximo comun divisor
 	def gcd(x, y)
 		aux = 1
 		aux1 = 1
@@ -112,7 +109,7 @@ class Fraccion
   		aux1
 	end
 
-end
+end #Fraccion
 
 f1 = Fraccion.new(4.0,5)
 f2 = Fraccion.new(6,4)

@@ -1,10 +1,11 @@
 require "./lib/Matriz/Matriz.rb"
 require "./lib/Matriz/Matriz_Densa.rb"
-
+#Clase Matriz_Dispersa para la representacion de la Matriz dispersa, hereda de la clase Matrix.
 class Matriz_Dispersa < Matrix
-
+  #alt=alto   anc= ancho n_elem= numero de elementos alto=posicion alto ancho=posicion ancho elem=elemento
   attr_accessor(:alt, :anc, :n_elem, :alto, :ancho, :elem)
-  
+	#Inicializador de los valores de la matriz dispersa.
+	#Se utiliza una estructura con un array para las posiciones y otro para los valores no nulos. 	
 	def initialize(alto, ancho, alt, anc, array, n_elem)
 		@alt = alto-1
 		@anc = ancho-1
@@ -18,7 +19,7 @@ class Matriz_Dispersa < Matrix
 		   @elem[i] = array[i]
 		end
 	end
-	
+	#Metodos que permite acceder a un elemento de la matriz.	
 	def [](i, j = nil)
 		if (j.nil?)
 			@M[i]
@@ -26,13 +27,13 @@ class Matriz_Dispersa < Matrix
 			@M[i,j]
 		end
 	end
-
+	#Metodos que permite asignar un valor en la matriz.
 	def []=(i, value)
 		@alto[i]=value
 		@ancho[i]=value
 		@elem[i]=value
 	end
-
+	#Metodo de comparacion.
 	def ==(other)
 		if (@alt == other.alt) && (@anc == other.anc)
 			for i in (0..@alt)
@@ -57,7 +58,7 @@ class Matriz_Dispersa < Matrix
 	  @M
 	end
 	
-	#METODO TO_S
+	#METODO TO_S para convertir a string.
 	def to_s
 	  w=0
 	  aux = "["
@@ -93,7 +94,8 @@ class Matriz_Dispersa < Matrix
 	  aux
 	end
 	
-	#SUMA
+	#SUMA de dos matrices.
+	#Como iterador se usa "upto" el cual ejecutara el bloque que se le pase el numero de veces que se le indique.
 	def +(other)
 	  if (other.is_a? Matriz_Dispersa)
 		if(@alt==other.alt && @anc=other.anc)
@@ -150,7 +152,8 @@ class Matriz_Dispersa < Matrix
 	  end
 	end
 
-	#RESTA
+	#RESTA de dos matrices.
+	#Como iterador se usa "map" el cual invoca al bloque dado, para cada elemento.
 	def -(other)
 	  if (other.is_a? Matriz_Dispersa)
 		if(@alt==other.alt && @anc=other.anc)
@@ -207,7 +210,7 @@ class Matriz_Dispersa < Matrix
 	  end
 	end
 
-	#MULTIPLICACION
+	#MULTIPLICACION de dos matrices.
 	def *(other)
 	      if(@alt==other.alt && @anc=other.anc)
 		if(other.is_a? Matriz_Dispersa)
@@ -220,7 +223,7 @@ class Matriz_Dispersa < Matrix
 	      end
 	    end
 	
-	#MAXIMO
+	#MAXIMO, calcula el elemento mas grande de la matriz.
 	def max
 	  w=0
 	  for i in(0..@n_elem-1)
@@ -231,7 +234,7 @@ class Matriz_Dispersa < Matrix
 	  w
 	end
 	
-	#MINIMO
+	#MINIMO, calcula el elemento mas pequenyo de la matriz.
 	def min
 	  w=0
 	  for i in(0..@n_elem-1)
@@ -245,7 +248,7 @@ class Matriz_Dispersa < Matrix
 	  w
 	end
 	
-end
+end #Matriz_Dispersa
 
 q = Matriz_Dispersa.new(2,2,[1],[1],[7],1)
 puts q

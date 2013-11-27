@@ -1,42 +1,32 @@
 require "./lib/Matriz.rb"
-
 require "test/unit"
-   
-class Test_Matriz < Test::Unit::TestCase
 
+ #clase test  
+class Test_Matriz < Test::Unit::TestCase
+#Inicia las variables de instancia
     def setup
         # Crear matrices
         # -- Densas 
-        @m1 = Matriz_Densas.new(2,2,[1,2,3,4])
-        @m2 = Matriz_Densas.new(2,2,[1,2,3,4])
-
-        # -- Dispersas
-        @md1 = Matriz_Dispersa.new(2,2,[1],[1],[7],1)
-        @md2 = Matriz_Dispersa.new(2,2,[0],[0],[5],1)
+        @m1 = Matriz_Densa.new(2,2,[1,2,3,4])
+        @m2 = Matriz_Densa.new(2,2,[1,2,3,4])
 
     end
-
+#pruebas unitarias de enteros
     def test_enteros
         #Suma
-        @m3 = Matriz_Densas.new(2,2,[2,4,6,8])
+        @m3 = Matriz_Densa.new(2,2,[2,4,6,8])
         assert_equal(@m3, @m1+@m2)
 
-        @md3 = Matriz_Dispersa.new(2,2,[0,1],[0,1],[5,7],2)
-        assert_equal(@md3, @md1+@md2)
         #Resta
         @m3 = Matriz_Densa.new(2,2,[0,0,0,0])
         assert_equal(@m3, @m1-@m2)
 
-        @md3 = Matriz_Dispersa.new(2,2,[0,1],[0,1],[-5,7],2)
-        assert_equal(@md3, @md1-@md2)
         #Multiplicación
-        @m3 = Matriz_Densas.new(2,2,[2,4,6,8])
+        @m3 = Matriz_Densa.new(2,2,[2,4,6,8])
         assert_equal(@m3, @m1*@m2)
 
-        @md3 = Matriz_Dispersa.new(2,2,[0,1],[0,1],[5,7],2)
-        assert_equal(@md3, @md1*@md2)
         #Comparación
-	@m3 = Matriz_Densas.new(2,2,[1,2,3,4])
+	@m3 = Matriz_Densa.new(2,2,[1,2,3,4])
         assert_equal(@m3, @m1)
 
         #Mínimo

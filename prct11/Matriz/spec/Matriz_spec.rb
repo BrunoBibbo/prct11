@@ -4,7 +4,7 @@ require "./lib/Matriz.rb"
 
 
 
-
+#Crea un grupo de pruebas
    describe "Operaciones con enteros" do
     before :all do
       # Crear matrices
@@ -13,8 +13,7 @@ require "./lib/Matriz.rb"
 
     end
 
-    # @m3 es la matriz resultado
-  
+    # @m3 es la matriz resultado 
     it "Deben poder sumarse 2 matrices" do
       @m3 = Matriz_Densa.new(2, 2,[4,6,8,5])
 
