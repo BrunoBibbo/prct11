@@ -1,0 +1,16 @@
+Wed, 27 Nov 2013 20:36:30 +0000
+./LICENSE.txt	Wed, 27 Nov 2013 18:46:47 +0000
+./lib/Matriz.rb	Wed, 27 Nov 2013 20:02:44 +0000
+./lib/Matriz/Matriz_Dispersa.rb	Wed, 27 Nov 2013 20:09:38 +0000
+./lib/Matriz/Fraccion.rb	Wed, 27 Nov 2013 20:32:35 +0000
+./lib/Matriz/version.rb	Wed, 27 Nov 2013 20:29:09 +0000
+./lib/Matriz/Matriz.rb	Wed, 27 Nov 2013 20:32:36 +0000
+./lib/Matriz/Matriz_Densa.rb	Wed, 27 Nov 2013 20:32:37 +0000
+./Rakefile	Wed, 27 Nov 2013 20:26:58 +0000
+./Rakefile~	Wed, 27 Nov 2013 20:26:33 +0000
+./Guardfile	Wed, 27 Nov 2013 18:46:47 +0000
+./Gemfile	Wed, 27 Nov 2013 18:46:47 +0000
+./test/Matriz_test.rb	Wed, 27 Nov 2013 20:32:41 +0000
+./bin/Matriz	Wed, 27 Nov 2013 20:02:21 +0000
+./bin/Matriz~	Wed, 27 Nov 2013 18:46:47 +0000
+./spec/Matriz_spec.rb	Wed, 27 Nov 2013 20:32:43 +0000
