@@ -315,3 +315,10 @@ puts a*b
 
 puts u+k
 
+puts "ENCONTRAR"
+
+m = Matriz_Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
+
+puts " i  j" 
+print m.encontrar{ |value| value*value>=16}
+puts " "

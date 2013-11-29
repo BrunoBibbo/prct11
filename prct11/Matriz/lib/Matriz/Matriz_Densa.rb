@@ -137,6 +137,16 @@ class Matriz_Densa < Matrix
 	  w
 	end
 	
+	def encontrar
+	  (@alt+1).times do |i|
+	    (@anc+1).times do |j|
+	      if yield(@M[i][j])
+		return i,j
+	      end
+	    end
+	  end
+	  return nil   
+	end
+
+	
 end #Matriz_Densa
-
-

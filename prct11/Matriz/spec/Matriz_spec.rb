@@ -177,4 +177,16 @@ end
 
 
   end
+  
+  describe "Probando metodo encontrar" do
+    before :all do
+      #Encontrando un número en la matriz.
+      @m = Matriz_Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
+    end
+    
+    it "Encontrar el primero en devolver un resultado mayor o igual a 16" do
+    @m.encontrar{|value| value*value >= 16}
+    end
+  end
+  
 
